@@ -5,7 +5,8 @@ snap package for gnome-builder.
 Enable the source in apt first, after that run "apt-get update", and "apt-get source gnome-builder" at the 3.20.4 directory.
 
 The snapcraft could build it successfully.
-[[images/3-20-4-demo.png]]
+
+![images/3-20-4-demo.png]
 
 3.24
 ===
