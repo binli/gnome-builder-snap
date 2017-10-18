@@ -1,0 +1,103 @@
+name: gnome-builder
+version: '3.20.4'
+summary: IDE for GNOME
+description: |
+ IDE for GNOME
+ Builder is a new IDE for GNOME that is focused on bringing the power of
+ our platform to more developers than ever before. It is currently under
+ heavy development and needs your help to become a success. Check out our
+ Fundraiser to see how you can help. Get excited about the future by
+ taking a look at our planned Features.
+
+ https://wiki.gnome.org/Apps/Builder/Fundraiser
+ https://wiki.gnome.org/Apps/Builder/Features
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: devmode # use 'strict' once you have the right plugs and slots
+
+apps:
+  gnome-builder:
+    command: desktop-launch gnome-builder
+    plugs: [x11, unity7, home, gsettings, network]
+    environment:
+      XDG_DATA_DIRS: $SNAP/share:$SNAP/share/glib-2.0/schemas/
+
+parts:
+  gnome-builder:
+    # See 'snapcraft plugins'
+    source: gnome-builder-3.20.4
+    plugin: autotools
+    install-via: prefix
+    #configflags:  [--prefix=/snap/gnome-builder/current/usr]
+    build-packages:
+      - appstream-util
+      - dh-autoreconf
+      - dh-python
+      - debhelper
+      - desktop-file-utils
+      - exuberant-ctags
+      - gnome-pkg-tools
+      - gobject-introspection
+      - gsettings-desktop-schemas-dev
+      - intltool
+      - libclang-dev
+      - libdevhelp-dev
+      - libgit2-glib-1.0-dev
+      - libgjs-dev
+      - libglib2.0-dev
+      - libgtk-3-dev
+      - libgtksourceview-3.0-dev
+      - libpango1.0-dev
+      - libpcre3-dev
+      - libpeas-dev
+      - libvala-0.32-dev
+      - libvte-2.91-dev
+      - libwebkit2gtk-4.0-dev
+      - libxml2-dev
+      - llvm
+      - python-gi-dev
+      - python3-dev
+      - valac
+      - yelp-tools
+      - libyaml-dev
+    stage-packages:
+      - autoconf-archive
+      - exuberant-ctags
+      - gir1.2-git2-glib-1.0
+      - gir1.2-glib-2.0
+      - gir1.2-gtk-3.0
+      - gir1.2-gtksource-3.0
+      - gir1.2-peas-1.0
+      - gir1.2-webkit2-4.0
+      - python3-gi
+      - valac-0.32-vapi
+      - libvala-0.32-dev
+      - clang
+      - dconf-gsettings-backend
+      - python3
+      - libc6
+      - libcairo2
+      - libclang1-3.8
+      - libdevhelp-3-2
+      - libfontconfig1
+      - libgdk-pixbuf2.0-0
+      - libgirepository-1.0-1
+      - libgit2-glib-1.0-0
+      - libglib2.0-0
+      - libgtk-3-0
+      - libgtksourceview-3.0-1
+      - libpango-1.0-0
+      - libpangocairo-1.0-0
+      - libpangoft2-1.0-0
+      - libpcre3
+      - libpeas-1.0-0
+      - libpython3.5
+      - libvala-0.32-0
+      - libvte-2.91-0
+      - libwebkit2gtk-4.0-37
+      - libxml2
+      - python3-jedi
+      - python3-lxml
+      - snapcraft
+    after: [desktop-gtk3]
+
